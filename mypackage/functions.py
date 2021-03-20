@@ -10,7 +10,8 @@ def search_name_for_value(
         value: 'your search value'
         ) -> list:
 
-    ''' looks for a specific value in a table and returns a list of names * complete '''
+    ''' looks for a specific value in a table and
+    returns a list of names * complete '''
     names_list = []
     for i in range(1, sheet.max_row+1):
         cell = cell + str(i)
@@ -34,7 +35,8 @@ def search_name_for_value_other(
         value: 'your search value'
         ) -> dict:
 
-    ''' looks for a specific value in one table, and returns 2 others needed in the dictionary (value: value) * complete '''
+    ''' looks for a specific value in one table, and returns 2 others
+    needed in the dictionary (value: value) * complete '''
     names_and_phones_dict = {}
     for i in range(1, sheet.max_row + 1):
         cell_values = cell_values + str(i)
