@@ -5,7 +5,7 @@ PATTERN = '1|2|3|4|5|6|7|8|9'
 
 def search_name_for_value(
         sheet: 'ws.active',
-        cell_names: 'your names cell (example: "B1")',
+        cell_names: 'your names cell (example: "B")',
         cell: 'values cell search',
         value: 'your search value'
         ) -> list:
