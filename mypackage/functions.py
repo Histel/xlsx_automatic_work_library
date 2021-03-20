@@ -32,7 +32,7 @@ def search_name_for_value_other(
         cell_other_values: 'other values cell (example: "phone")',
         cell_values: 'values cell search',
         value: 'your search value'
-        ) -> list:
+        ) -> dict:
 
     ''' looks for a specific value in one table, and returns 2 others needed in the dictionary (value: value) * complete '''
     names_and_phones_dict = {}
