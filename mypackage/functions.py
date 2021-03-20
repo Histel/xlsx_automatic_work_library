@@ -13,7 +13,6 @@ def search_name_for_value(
     ''' looks for a specific value in a table and returns a list of names * complete '''
     names_list = []
     for i in range(1, sheet.max_row+1):
-        i = i
         cell = cell + str(i)
         cell_names = cell_names + str(i)
         prevsymbol_names = sheet[cell_names].value
