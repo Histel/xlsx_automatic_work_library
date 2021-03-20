@@ -1,6 +1,6 @@
 import re
 
-PATTERN = '1|2|3|4|5|6|7|8|9'
+PATTERN = '0|1|2|3|4|5|6|7|8|9'
 
 
 def search_name_for_value(
