@@ -3,6 +3,22 @@ import re
 PATTERN = '0|1|2|3|4|5|6|7|8|9'
 
 
+def set_column_headers(
+        sheet: 'ws.active',
+        **kwargs: 'names A1, B1, C1.., example: ("B": "text")'
+        ) -> 'print in xlsx':
+
+    ''' sets headings to the first cells of columns '''
+    for cell, text in kwargs.items():
+        cell = str(cell)
+        if len(cell) >= 2:
+            raise ValueError('the value must contain only one of the letters in the column (A, B, C, D..).')
+        else:
+            cell = cell + '1'
+            sheet[cell] = text
+    return None
+
+
 def search_name_for_value(
         sheet: 'ws.active',
         cell_names: 'your names cell (example: "B")',
