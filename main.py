@@ -1,5 +1,5 @@
 from openpyxl import load_workbook, Workbook
-from mypackage.functions import search_name_for_value, search_name_for_value_other, set_column_headers
+from mypackage.functions import search_name_for_value, search_name_for_value_other, set_column_headers, add_change_values_cells
 
 
 def main():
@@ -12,6 +12,7 @@ def main():
 
     new_sheet[1][0].value = 'hello world'
     set_column_headers(new_sheet, B='Hello World!', C='Goodbye')
+    add_change_values_cells(new_sheet, I9='I9', D='da', E20='cell')
 
     new_book.save('new_book.xlsx')
     new_book.close()

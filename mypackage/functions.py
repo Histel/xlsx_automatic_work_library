@@ -3,6 +3,21 @@ import re
 PATTERN = '0|1|2|3|4|5|6|7|8|9'
 
 
+def add_change_values_cells(
+        sheet: 'ws.active',
+        **kwargs: 'names A4, B54, C32.., example: (B21="text", or B="text")'
+        ) -> 'add/change value in xlsx':
+
+    ''' Добавляет/Изменяет значение в указанной таблице '''
+    for cell, text in kwargs.items():
+        cell = str(cell)
+        if len(cell) == 1:
+            cell = cell + '1'
+            sheet[cell] = text
+        else:
+            sheet[cell] = text
+
+
 def set_column_headers(
         sheet: 'ws.active',
         **kwargs: 'names A1, B1, C1.., example: (B="text")'
