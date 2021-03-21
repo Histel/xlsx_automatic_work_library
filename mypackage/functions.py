@@ -8,7 +8,7 @@ def add_change_values_cells(
         **kwargs: 'names A4, B54, C32.., example: (B21="text", or B="text")'
         ) -> 'add/change value in xlsx':
 
-    ''' Добавляет/Изменяет значение в указанной таблице '''
+    ''' Adds / Modifies a value in the specified table '''
     for cell, text in kwargs.items():
         cell = str(cell)
         if len(cell) == 1:
