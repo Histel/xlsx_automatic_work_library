@@ -16,6 +16,7 @@ def add_change_values_cells(
             sheet[cell] = text
         else:
             sheet[cell] = text
+    return None
 
 
 def set_column_headers(
