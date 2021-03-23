@@ -8,7 +8,8 @@ from mypackage.functions import add_change_values_cells
 from mypackage.functions import return_values_cell
 
 from mypackage.app_functions import return_date_value_dict
-from mypackage.app_functions import return_user_list, split_all_values_list
+from mypackage.app_functions import return_user_list
+from mypackage.app_functions import split_all_values_list
 
 # from tkinter import Tk
 # from tkinter import Button
