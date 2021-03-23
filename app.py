@@ -7,6 +7,9 @@ from mypackage.functions import set_column_headers
 from mypackage.functions import add_change_values_cells
 from mypackage.functions import return_values_cell
 
+from mypackage.app_functions import return_date_value_dict
+from mypackage.app_functions import return_user_list, split_all_values_list
+
 # from tkinter import Tk
 # from tkinter import Button
 # from tkinter import filedialog
@@ -26,35 +29,11 @@ def main():
     book_data = load_workbook('zhurnal_medosmotrov_1_12-31_12.xlsx')
     sheet = book_data['Sheet']
 
-    all_values_list = return_values_cell(sheet, 'A')
-    print(len(all_values_list))
-    all_values_str = ''.join(all_values_list)
-    new_all_values_list = re.split(';', all_values_str)
+    all_values_list = split_all_values_list(sheet, 'A')
 
-    users_list = []
-    prevsymbol_slice = 0
-    after_slice = 6
-    for item in new_all_values_list:
-        if not item:
-            break
-        users_list.append(new_all_values_list[prevsymbol_slice:after_slice])
-        prevsymbol_slice += 7
-        after_slice += 7
+    users_list = return_user_list(all_values_list)
 
-    admittance_dict = {}
-    admittance = 0
-    for users, next_user in zip_longest(users_list, users_list[1:], fillvalue=''):
-            try:
-                users_date = users[0][:2]
-                next_users_date = next_user[0][:2]
-                if users[5] == 'Допуск':
-                    print('Допуск')
-                    admittance += 1
-                    admittance_dict[users[0][:2]] = admittance
-                    if users_date < next_users_date:
-                        admittance = 0
-            except IndexError:
-                pass
+    admittance_dict = return_date_value_dict(users_list, 'Допуск')
 
     print(admittance_dict)
 
