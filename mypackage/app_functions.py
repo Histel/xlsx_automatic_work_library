@@ -14,7 +14,6 @@ import re
 def split_all_values_list(sheet: 'ws.active', cell_name: 'example "A"') -> list:
     ''' Возвращает список из разбитых элементов через ";" '''
     all_values_list = return_values_cell(sheet, cell_name)
-    print(len(all_values_list))
     all_values_str = ''.join(all_values_list)
     new_all_values_list = re.split(';', all_values_str)
     return new_all_values_list
