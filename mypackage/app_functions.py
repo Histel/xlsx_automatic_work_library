@@ -14,13 +14,12 @@ import re
 def split_all_values_list(sheet: 'ws.active', cell_name: 'example "A"') -> list:
     ''' Возвращает список из разбитых элементов через ";" '''
     all_values_list = return_values_cell(sheet, cell_name)
-    print(len(all_values_list))
     all_values_str = ''.join(all_values_list)
     new_all_values_list = re.split(';', all_values_str)
     return new_all_values_list
 
 
-def return_user_list(all_values_list: 'list with data') -> list:
+def return_users_list(all_values_list: 'list with data') -> list:
     ''' Возвращает список со всеми значениями разбив их на отдельные списки (по 6 элементов в каждом) '''
     user_list = []
     prevsymbol_slice = 0
@@ -31,6 +30,8 @@ def return_user_list(all_values_list: 'list with data') -> list:
         user_list.append(all_values_list[prevsymbol_slice:after_slice])
         prevsymbol_slice += 7
         after_slice += 7
+    user_list = list(filter(None, user_list))
+    user_list.pop()
     return user_list
 
 

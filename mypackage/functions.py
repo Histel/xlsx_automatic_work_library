@@ -1,15 +1,28 @@
 import re
 
-PATTERN = '0|1|2|3|4|5|6|7|8|9'
+NUMS_CLEAR = '0|1|2|3|4|5|6|7|8|9'
 
+
+def return_values_cell(
+        sheet: 'ws.active',
+        cell_name: 'your names cell (example: "B")',
+        ) -> list:
+
+    return_list = []
+    for i in range(2, sheet.max_row + 1):
+        cell_name = cell_name + str(i)
+        prevsymbol = sheet[cell_name].value
+        return_list.append(prevsymbol + ';')
+        cell_name = re.sub(NUMS_CLEAR, '', cell_name)
+    return return_list
 
 def add_change_values_cells(
         sheet: 'ws.active',
-        **kwargs: 'names A4, B54, C32.., example: (B21="text", or B="text")'
+        **cell_name: 'names A4, B54, C32.., example: (B21="text", or B="text")'
         ) -> 'add/change value in xlsx':
 
     ''' Adds / Modifies a value in the specified table '''
-    for cell, text in kwargs.items():
+    for cell, text in cell_name.items():
         cell = str(cell)
         if len(cell) == 1:
             cell = cell + '1'
@@ -53,8 +66,8 @@ def search_name_for_value(
         if prevsymbol == value:
             names_list.append(prevsymbol_names)
 
-        cell = re.sub(PATTERN, '', cell)
-        cell_names = re.sub(PATTERN, '', cell_names)
+        cell = re.sub(NUMS_CLEAR, '', cell)
+        cell_names = re.sub(NUMS_CLEAR, '', cell_names)
     names_set = set(names_list)
     return names_set
 
@@ -80,9 +93,9 @@ def search_name_for_value_other(
         if prevsymbol_values == value:
             names_and_values_dict[prevsymbol_names] = prevsymbol_other_values
 
-        cell_values = re.sub(PATTERN, '', cell_values)
-        cell_other_values = re.sub(PATTERN, '', cell_other_values)
-        cell_names = re.sub(PATTERN, '', cell_names)
+        cell_values = re.sub(NUMS_CLEAR, '', cell_values)
+        cell_other_values = re.sub(NUMS_CLEAR, '', cell_other_values)
+        cell_names = re.sub(NUMS_CLEAR, '', cell_names)
     return names_and_values_dict
 
 
