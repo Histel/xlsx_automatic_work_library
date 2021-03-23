@@ -16,6 +16,7 @@ def add_change_values_cells(
             sheet[cell] = text
         else:
             sheet[cell] = text
+    return None
 
 
 def set_column_headers(
@@ -68,7 +69,7 @@ def search_name_for_value_other(
 
     ''' looks for a specific value in one table, and returns 2 others
     needed in the dictionary (value: value) * complete '''
-    names_and_phones_dict = {}
+    names_and_values_dict = {}
     for i in range(1, sheet.max_row + 1):
         cell_values = cell_values + str(i)
         cell_other_values = cell_other_values + str(i)
@@ -77,12 +78,12 @@ def search_name_for_value_other(
         prevsymbol_names = sheet[cell_names].value
         prevsymbol_values = sheet[cell_values].value
         if prevsymbol_values == value:
-            names_and_phones_dict[prevsymbol_names] = prevsymbol_other_values
+            names_and_values_dict[prevsymbol_names] = prevsymbol_other_values
 
         cell_values = re.sub(PATTERN, '', cell_values)
         cell_other_values = re.sub(PATTERN, '', cell_other_values)
         cell_names = re.sub(PATTERN, '', cell_names)
-    return names_and_phones_dict
+    return names_and_values_dict
 
 
 def _test():
